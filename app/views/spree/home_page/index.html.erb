@@ -1,0 +1,59 @@
+<%
+  homepage_style = 'overflow:hidden;'
+%>
+<div id="homepage_blocks" style="<%= homepage_style %>">
+	<% if ! @homepage_blocks.blank? %>
+		<% @homepage_blocks.each do |homepage_block| %>
+            <%
+                                homepage_block_style = homepage_style + 'box-shadow: 10px 10px 5px 0px #888888; margin-right: 10px; margin-bottom: 10px;'
+                                if homepage_block.flotation
+                                        homepage_block_style = homepage_block_style + 'float:'
+                                        homepage_block_style = homepage_block_style + homepage_block.flotation
+                                        homepage_block_style = homepage_block_style + '; '
+                                end
+                                if homepage_block.width
+                                        homepage_block_style = homepage_block_style + 'width:'
+                                        homepage_block_style = homepage_block_style + homepage_block.width.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+                                if homepage_block.height
+                                        homepage_block_style = homepage_block_style + 'height:'
+                                        homepage_block_style = homepage_block_style + homepage_block.height.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+                                if homepage_block.top_margin
+                                        homepage_block_style = homepage_block_style + 'margin-top:'
+                                        homepage_block_style = homepage_block_style + homepage_block.top_margin.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+                                if homepage_block.right_margin
+                                	    homepage_block_right_margin = homepage_block.right_margin + 10
+                                        homepage_block_style = homepage_block_style + 'margin-right:'
+                                        homepage_block_style = homepage_block_style + homepage_block_right_margin.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+                                if homepage_block.bottom_margin
+                                	    homepage_block_bottom_margin = homepage_block.bottom_margin + 10
+                                        homepage_block_style = homepage_block_style + 'margin-bottom:'
+                                        homepage_block_style = homepage_block_style + homepage_block_bottom_margin.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+                                if homepage_block.top_margin
+                                        homepage_block_style = homepage_block_style + 'margin-left:'
+                                        homepage_block_style = homepage_block_style + homepage_block.left_margin.to_s
+                                        homepage_block_style = homepage_block_style + 'px; '
+                                end
+            %>
+			<div style="<%= homepage_block_style %>">
+				<% homepage_block.homepage_block_images.each do |homepage_block_image| %>
+					<% if File.exist?(homepage_block_image.attachment.path) %>	
+					<%= link_to(image_tag(homepage_block_image.attachment.url(:original), :alt => homepage_block_image.alt),homepage_block_image.destination_url) %><br/>
+					<% end %>
+				<% end %>
+				<% if ! homepage_block.content.blank? %>
+					<%= raw homepage_block.content %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+</div>

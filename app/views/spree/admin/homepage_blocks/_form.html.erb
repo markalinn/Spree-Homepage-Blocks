@@ -1,0 +1,38 @@
+<tr>
+  <td><%= t("name") %>:</td>
+  <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+  <td><%= t("width") %>:</td>
+  <td><%= f.text_field :width %></td>
+</tr>
+<tr>
+  <td><%= t("height") %>:</td>
+  <td><%= f.text_field :height %></td>
+</tr>
+<tr>
+  <td><%= t("top_margin") %>:</td>
+  <td><%= f.text_field :top_margin %></td>
+</tr>
+<tr>
+  <td><%= t("right_margin") %>:</td>
+  <td><%= f.text_field :right_margin %></td>
+</tr>
+<tr>
+  <td><%= t("bottom_margin") %>:</td>
+  <td><%= f.text_field :bottom_margin %></td>
+</tr>
+<tr>
+  <td><%= t("left_margin") %>:</td>
+  <td><%= f.text_field :left_margin %></td>
+</tr>
+<tr>
+  <td><%= t("float") %>:</td>
+  <td>
+  	<%= f.select(:flotation, [['Left','left'],['Right','right']])%>
+  </td>
+</tr>
+<tr>
+  <td><%= t("text_content") %>:</td>
+  <td><%= f.text_area :content %></td>
+</tr>

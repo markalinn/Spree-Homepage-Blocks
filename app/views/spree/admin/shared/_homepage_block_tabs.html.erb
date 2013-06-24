@@ -1,0 +1,16 @@
+<h1><%= t(:editing_homepage_block) %> &ldquo;<%= @homepage_block.name %>&rdquo;</h1>
+
+<% content_for :sidebar do %>
+
+  <h3><%= @homepage_block.name %></h3>
+  <br class="clear" />
+
+  <ul class="sidebar homepage-block-menu" data-hook="admin_hompage_block_tabs">
+    <li<%== ' class="active"' if current == 'Homepage Block Details' %>>
+      <%= link_to t(:homepage_block_details), edit_admin_homepage_block_url(@homepage_block) %>
+    </li>
+    <li<%== ' class="active"' if current == 'Homepage Block Images' %>>
+      <%= link_to t(:homepage_block_images), admin_homepage_block_homepage_block_images_path(@homepage_block) %>
+    </li>
+  </ul>
+<% end %>

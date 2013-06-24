@@ -2,4 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  new_homepage_block: "New Homepage Block"
+  homepage_block: "Homepage Block"
+  homepage_blocks: "Homepage Blocks"
+  new_homepage_block_image: "New Homepage Block Image"
+  homepage_block_image: "Homepage Block Image"
+  homepage_block_images: "Homepage Block Images"

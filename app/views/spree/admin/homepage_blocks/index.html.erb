@@ -1,0 +1,30 @@
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_homepage_block"), new_admin_homepage_block_url, :icon => 'add', :id => 'admin_new_homepage_block_link' %></p>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%= t("homepage_blocks") %></h1>
+
+<table class="index sortable" data-sortable-link="<%= update_positions_admin_homepage_blocks_url %>">
+  <tr>
+    <th><%= t("name") %></th>
+  </tr>
+
+  <% @homepage_blocks.each do |block| %>
+    <tr id="<%= spree_dom_id block %>">
+      <td>
+        <span class="handle"></span>
+        <%= block.name %>
+      </td>
+      <td class="actions">
+        <%= link_to_with_icon('edit', t("edit"), edit_admin_homepage_block_url(block), :class => 'edit') %>
+        &nbsp;
+        <%= link_to_delete block, {:url => admin_homepage_block_url(block) }%>
+      </td>
+    </tr>
+  <% end %>
+</table>

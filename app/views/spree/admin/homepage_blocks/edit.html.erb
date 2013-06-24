@@ -1,0 +1,12 @@
+<%= render :partial => 'spree/admin/shared/homepage_block_tabs', :locals => { :current => 'Hompage Block Details' } %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @homepage_block } %>
+
+<%= form_for(:homepage_block, :url => admin_homepage_block_url, :html => { :method => :put, :multipart => true }) do |f| %>
+  <table class="basic-table">
+    <%= render :partial => "form", :locals => { :f => f } %>
+  </table>
+  <p class="form-buttons">
+    <%= button t("update") %>
+    <%= t('or') %> <%= link_to t("cancel"), admin_homepage_blocks_url, :id => "cancel_link" %>
+  </p>
+<% end %>

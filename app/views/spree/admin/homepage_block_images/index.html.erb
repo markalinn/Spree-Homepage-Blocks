@@ -1,0 +1,36 @@
+<%= render :partial => 'spree/admin/shared/homepage_block_tabs', :locals => { :current => 'Hompage Block Details' } %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_homepage_block_image"), new_admin_homepage_block_homepage_block_image_url(@homepage_block), :icon => 'add', :id => 'admin_new_homepage_block_link' %></p>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%= t("homepage_block_images") %></h1>
+
+<table class="index sortable" data-sortable-link="<%= update_positions_admin_homepage_block_homepage_block_images_url(@homepage_block) %>">
+  <tr>
+    <th><%= t("thumbnail") %></th>
+    <th><%= t("destination_url") %></th>
+  </tr>
+
+  <% @homepage_block_images.each do |homepage_block_image| %>
+    <tr id="<%= spree_dom_id homepage_block_image %>">
+      <td>
+        <span class="handle"></span>
+        <%= image_tag(homepage_block_image.attachment.url(:small)) %>
+      </td>
+      <td>
+        <%= link_to(homepage_block_image.destination_url, homepage_block_image.destination_url) %>
+      </td>
+      <td class="actions">
+        <%= link_to_with_icon('edit', t("edit"), edit_admin_homepage_block_homepage_block_image_url(@homepage_block,homepage_block_image), :class => 'edit') %>
+        &nbsp;
+        <%= link_to_delete homepage_block_image, {:url => admin_homepage_block_homepage_block_image_url(@homepage_block,homepage_block_image) }%>
+      </td>
+    </tr>
+  <% end %>
+</table>

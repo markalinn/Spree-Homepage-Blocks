@@ -1,0 +1,24 @@
+<%= render :partial => 'spree/admin/shared/homepage_block_tabs', :locals => { :current => 'Hompage Block Details' } %>
+
+<h4><%= t("new_homepage_block_image") %></h4>
+<%= form_for(:homepage_block_image, :url => { :action => 'create' }, :html => { :multipart => true }) do |form| %>
+  <table class="basic-table">
+    <%= render :partial => "form", :locals => { :f => form } %>
+  </table>
+  <p class="form-buttons">
+    <%= button t("update") %>
+    <%= t('or') %> <%= link_to t("cancel"), "#", :id => "cancel_link" %>
+  </p>
+<% end %>
+
+
+<script type="text/javascript">    
+  jQuery('#cancel_link').click(function (event) { 
+    jQuery('#new_block_image_link').show();
+    jQuery('#homepage_block_images').html('');
+  });  
+ 
+</script>
+
+ 
+ 
