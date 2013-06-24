@@ -2,6 +2,7 @@
   homepage_style = 'overflow:hidden;'
 %>
 <div id="homepage_blocks" style="<%= homepage_style %>">
+
 	<% if ! @homepage_blocks.blank? %>
 		<% @homepage_blocks.each do |homepage_block| %>
             <%
@@ -45,15 +46,34 @@
                                 end
             %>
 			<div style="<%= homepage_block_style %>">
-				<% homepage_block.homepage_block_images.each do |homepage_block_image| %>
-					<% if File.exist?(homepage_block_image.attachment.path) %>	
-					<%= link_to(image_tag(homepage_block_image.attachment.url(:original), :alt => homepage_block_image.alt),homepage_block_image.destination_url) %><br/>
+				<% if homepage_block.homepage_block_images.size > 1 %>
+					<div class="rotatingBanner">
+				        <div class="slider-wrapper theme-spree">
+				            <div id="slider" class="nivoSlider">
+				                <% homepage_block.homepage_block_images.each do |homepage_image| %>
+				                        <%= link_to(image_tag(homepage_image.attachment.url(:original), :alt => ''),homepage_image.destination_url) %>
+				                <% end %>
+				            </div>
+				        </div>
+					</div>
+				<% else %>
+					<% homepage_block.homepage_block_images.each do |homepage_block_image| %>
+						<% if File.exist?(homepage_block_image.attachment.path) %>	
+						<%= link_to(image_tag(homepage_block_image.attachment.url(:original), :alt => homepage_block_image.alt),homepage_block_image.destination_url) %><br/>
+						<% end %>
 					<% end %>
-				<% end %>
-				<% if ! homepage_block.content.blank? %>
-					<%= raw homepage_block.content %>
-				<% end %>
+					<% if ! homepage_block.content.blank? %>
+						<%= raw homepage_block.content %>
+					<% end %>
+				<%end %>
 			</div>
 		<% end %>
 	<% end %>
 </div>
+
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+</script>
+
