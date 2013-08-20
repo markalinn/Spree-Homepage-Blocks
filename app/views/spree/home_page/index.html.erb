@@ -49,13 +49,18 @@
 				<% if homepage_block.homepage_block_images.size > 1 %>
 					<div class="rotatingBanner">
 				        <div class="slider-wrapper theme-spree">
-				            <div id="slider" class="nivoSlider">
+				            <div id="slider_<%= homepage_block.id %>" class="nivoSlider">
 				                <% homepage_block.homepage_block_images.each do |homepage_image| %>
 				                        <%= link_to(image_tag(homepage_image.attachment.url(:original), :alt => ''),homepage_image.destination_url) %>
 				                <% end %>
 				            </div>
 				        </div>
 					</div>
+					<script type="text/javascript">
+					    $(window).load(function() {
+					        $('#slider_<%= homepage_block.id %>').nivoSlider();
+					    });
+					</script>
 				<% else %>
 					<% homepage_block.homepage_block_images.each do |homepage_block_image| %>
 						<% if File.exist?(homepage_block_image.attachment.path) %>	
@@ -70,10 +75,4 @@
 		<% end %>
 	<% end %>
 </div>
-
-<script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();
-    });
-</script>
 
